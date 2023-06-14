@@ -51,22 +51,6 @@ def single_visual(df):
 def evaluate(model):
     return pycaret.classification.evaluate_model(model)
 
-def shap(model):
-    return pycaret.classification.interpret_model(model, error_score='raise')
-
-def shap1(model, X_test):
-    # train 데이터 분할
-    X_train, y_train = AC.setup(data, target=target_variable)
-
-    # 모델 학습
-    model.fit(X_train, y_train)
-
-    # SHAP 값을 계산
-    explainer = shap.Explainer(model)
-    shap_values = explainer.shap_values(X_test)
-
-    return shap_values
-
 def prediction(model):
     return pycaret.classification.predict_model(model)
 
