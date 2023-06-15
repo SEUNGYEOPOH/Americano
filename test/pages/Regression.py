@@ -70,7 +70,7 @@ if regression_flag:
         single_visual_result = AR.single_visual(single_result)
         single_visual_graph = AR.save_df()
         st.write('Single Visual Graph Data')
-        st.line_chart(single_visual_graph)
+        st.line_chart(single_visual_graph.drop(['Mean', 'Std'], axis=0))
     
 
     st.subheader('Compare Model')
