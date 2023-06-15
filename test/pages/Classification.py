@@ -1,8 +1,6 @@
 import streamlit as st
 import AutoClassification as AC
 import pandas as pd
-from streamlit_shap import st_shap
-import shap as sp
 
 st.markdown("# Classification")
 st.sidebar.markdown("# Classification")

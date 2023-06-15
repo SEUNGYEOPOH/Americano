@@ -100,29 +100,9 @@ if regression_flag:
 
     st.write("SHAP")
     with st.spinner("shap"):
-        #shap = AR.shap(optimize_best_model)
-        #st.pyplot(shap)
-        X_train, X_test = setting.X_train, setting.X_test
-        y_train, y_test = setting.y_train, setting.y_test
-
-        X_display,y_display = sp.datasets.adult(display=True)
-
-        try:
-            explainer = sp.Explainer(optimize_best_model, X_test)
-            shap_values = explainer.shap_values(X_test)
-            st_shap(sp.plots.waterfall(shap_values[0]), height=300)
-            st_shap(sp.plots.beeswarm(shap_values), height=300)
-        except:
-            explainer = sp.TreeExplainer(optimize_best_model,
-                                        feature_perturbation="tree_path_dependent")
-            shap_values = explainer(X_test)
-            st_shap(sp.force_plot(explainer.expected_value, 
-                                    shap_values[0,:], X_display.iloc[0,:]), 
-                                    height=200, width=1000)
-            st_shap(sp.force_plot(explainer.expected_value, 
-                                    shap_values[:1000,:], X_display.iloc[:1000,:]), 
-                                    height=400, width=1000)
-
+        shap = AR.shap(optimize_best_model)
+        st.write(shap)
+        
     st.write("Predict")
     with st.spinner("predict..."):
         pred = AR.prediction(optimize_best_model)
@@ -140,5 +120,6 @@ if regression_flag:
         model_pred = AR.prediction(load)
         st.write(model_pred)
     
+
 elif not r_data_ and regression_flag:
     st.error('데이터를 넣어주세요')
