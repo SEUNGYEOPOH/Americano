@@ -1,6 +1,5 @@
 import streamlit as st
-import numpy as np
+import AutoRegression as AR
 import pandas as pd
 
-st.title("Americano")
-st.header("Term-project")
+st.header('AMERICANO')

@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 import pycaret.regression
 
-def setup(data, target, use_gpu, outliar):
-    return pycaret.regression.setup(data, target=target, session_id=123, train_size=0.7, use_gpu=use_gpu, remove_outliers=outliar)
+def setup(data, target, train, use_gpu, outliar):
+    return pycaret.regression.setup(data, target=target, session_id=123, train_size=train, use_gpu=use_gpu, remove_outliers=outliar)
 
 def save_df():
     results = pycaret.regression.pull()
@@ -27,8 +27,8 @@ def interpolation(data,target,method): #target = missing_cols
         data[target[i]] = data[target[i]].interpolate(method = method[i])
     return data
 
-def compare(standard):
-    return pycaret.regression.compare_models(sort=standard)
+def compare(target_model_list):
+    return pycaret.regression.compare_models(include=target_model_list)
 
 def tune(model, opt):
     return pycaret.regression.tune_model(model, optimize=opt, choose_better=True)
