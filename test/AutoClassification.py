@@ -3,8 +3,7 @@ import numpy as np
 import pycaret
 import pycaret.classification
 
-#from pycaret.class
-#ification import *
+#from pycaret.classification import *
 
 def setup(data, target, train, use_gpu, outliar):
     return pycaret.classification.setup(data, target=target, session_id=123, train_size=0.7, use_gpu=use_gpu, remove_outliers=outliar)
@@ -45,6 +44,7 @@ def Blend(arr):
     arr[1]=pycaret.classification.create_model(arr[1])
     arr[2]=pycaret.classification.create_model(arr[2])
     return pycaret.classification.blend_models([arr[0],arr[1],arr[2]])
+
 def single(name):
     return pycaret.classification.create_model(name)
 

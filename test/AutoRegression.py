@@ -38,6 +38,7 @@ def Blend(arr):
     arr[1]=pycaret.regression.create_model(arr[1])
     arr[2]=pycaret.regression.create_model(arr[2])
     return pycaret.regression.blend_models([arr[0],arr[1],arr[2]])
+
 def single(name):
     return pycaret.regression.create_model(name)
 

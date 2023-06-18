@@ -2,6 +2,7 @@ import streamlit as st
 import AutoRegression as AR
 import pandas as pd
 import time
+import sys
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
@@ -30,16 +31,16 @@ r_data_ = st.file_uploader(
 
 method_box=[]
 analysis_data = None
+setting_result = None
 single_model_box=[]
 check_model = False
 setup_ready = False
-
     
 if r_data_ is not None:
     r_data = pd.read_csv(r_data_)
     st.subheader('Original Data Head')
     with st.expander("Start"):
-        st.write(r_data.head())
+        st.table(r_data.head())
         
     st.subheader('Data Pre-processing')
     with st.expander("Start"):
